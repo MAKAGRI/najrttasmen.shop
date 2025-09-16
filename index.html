@@ -1,182 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAT Cargo VAD LLC</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #333;
-        }
-        nav {
-            background: #000;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            background: #111;
-            color: #fff;
-            min-height: 100vh;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .hero-text {
-            max-width: 500px;
-            padding: 20px;
-            animation: slideInLeft 1.5s ease;
-        }
-        .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .hero-text p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .hero-img img {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
-            animation: slideInRight 1.5s ease;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .contact {
-            background: #e9e9e9;
-            padding: 60px 20px;
-        }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KAROBAR BROOKLYN MILL BASIN LLC — Property Services</title>
+  <meta name="description" content="KAROBAR BROOKLYN MILL BASIN LLC — property services: acquisitions, leasing, and management with a focus on quality residences."/>
+  <style>
+    :root{
+      --primary:#0D9488;   /* Teal */
+      --accent:#000000;    /* Black */
+      --ink:#0b0b0b;
+      --muted:#5b6470;
+      --card:#ffffff;
+      --bg:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+    /* Header */
+    header{background:var(--accent); color:#fff; position:sticky; top:0; z-index:10; box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
+    .brand{font-weight:900; letter-spacing:.35px}
+    nav a{display:inline-block; padding:10px 14px; border-radius:12px; color:#d9fffb; font-weight:700}
+    nav a:hover{background:rgba(255,255,255,.12)}
+    .cta-btn{background:var(--primary); color:#001412; padding:10px 14px; border-radius:12px; font-weight:800}
+
+    /* Hero */
+    .hero-wrap{background:linear-gradient(180deg,#ffffff,#eefcfb); padding:42px 24px}
+    .hero-card{
+      background:var(--card); border:1px solid rgba(0,0,0,.06); border-radius:22px;
+      box-shadow:0 30px 60px rgba(0,0,0,.12); padding:28px;
+      display:grid; grid-template-columns:1.15fr .85fr; gap:22px; overflow:hidden;
+      transform:translateY(24px); opacity:0; animation:cardIn .9s ease-out .15s forwards;
+    }
+    @keyframes cardIn{to{transform:translateY(0);opacity:1}}
+    .hero-badge{display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:var(--primary); padding:6px 12px; border-radius:999px; font-size:.9rem; font-weight:800}
+    .hero-title{font-size:clamp(26px,4vw,42px); line-height:1.15; margin:14px 0 10px; font-weight:900}
+    .hero-title .grad{background:linear-gradient(90deg,var(--primary),#2dd4bf); -webkit-background-clip:text; color:transparent}
+    .hero-sub{font-size:1.02rem; color:#2f3540}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{border:2px solid var(--accent); color:#fff; background:var(--accent); padding:12px 18px; border-radius:14px; font-weight:800}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 16px rgba(0,0,0,.15)}
+    .btn.secondary{background:var(--primary); color:#001412; border-color:var(--primary)}
+    .hero-media{border-radius:18px; overflow:hidden; aspect-ratio:4/3; background:#f3fffe;
+      display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:8px}
+    .hero-media img{object-fit:cover; width:100%; height:100%}
+
+    /* Sections */
+    section{padding:56px 24px}
+    section h2{font-size:clamp(22px,3vw,32px); margin:0 0 14px; font-weight:900}
+    .muted{color:var(--muted)}
+
+    /* Cards */
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+    .card{border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:16px; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06);
+      transform:translateY(14px); opacity:0}
+    .card.reveal{animation:reveal .7s ease-out forwards}
+    @keyframes reveal{to{transform:translateY(0); opacity:1}}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .gallery img{border-radius:14px; aspect-ratio:4/3; object-fit:cover}
+
+    /* Contact */
+    .contact-box{background:var(--primary); color:#001412; border-radius:18px; padding:20px; display:grid; gap:8px}
+    .contact-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .contact-actions a{display:inline-block; background:var(--accent); color:#ffffff; padding:10px 14px; border-radius:12px; font-weight:800}
+
+    footer{background:var(--accent); color:#2dd4bf; padding:18px; text-align:center; font-weight:700}
+
+    @media (max-width:820px){
+      .hero-card{grid-template-columns:1fr; padding:20px}
+      .gallery{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">PAT Cargo VAD LLC</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- Header -->
+  <header>
+    <div class="topbar container">
+      <div class="brand">KAROBAR BROOKLYN MILL BASIN LLC</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="cta-btn">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="hero" id="home">
-        <div class="hero-text">
-            <h1>PAT Cargo VAD LLC</h1>
-            <p>Your trusted partner in transportation and warehousing. We provide reliable cargo services and storage solutions to meet your business needs with efficiency and care.</p>
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="container">
+      <div class="hero-card">
+        <div>
+          <span class="hero-badge">Property Services</span>
+          <h1 class="hero-title">Quality homes. <span class="grad">Professional care.</span></h1>
+          <p class="hero-sub">Acquisitions, leasing, and day-to-day management for residential properties—clear communication, reliable upkeep, and respectful tenant experience.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#services">Explore Services</a>
+            <a class="btn secondary" href="#contact">Request Info</a>
+          </div>
+          <p class="muted" style="margin-top:10px;">
+            506 Messian Pl, Danville, CA 94526 • +1 712 345 0450 • admin@najrttasmen.shop
+          </p>
         </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=934&q=80" alt="Cargo Services">
+        <div class="hero-media">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/50.192mn_in_situ_exterior_east_print_bw_IMLS%2C_Schenck_House.jpg" alt="Historic residence">
+          <img src="https://avatars.mds.yandex.net/i?id=704cecfbcf6ea76bbabd63a907cb51bcf5a91e31-11454708-images-thumbs&n=13" alt="Neighborhood street">
+          <img src="https://www.brickunderground.com/sites/default/files/styles/new_blog_entry_primary_image_sm/public/blog/images/2770%20East%2063rd%20Street%20MAIN.png" alt="Property front">
+          <img src="http://static01.nyt.com/images/2015/05/10/realestate/10COVSIDE5/10COVSIDE5-articleLarge.jpg" alt="Interior living room">
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="section" id="about">
-        <h2>About Us</h2>
-        <p>PAT Cargo VAD LLC is a Domestic LLC based in Arizona, offering specialized services in transportation and warehousing. With a focus on reliability and customer satisfaction, we have been serving businesses since 2021.</p>
-        <p><strong>Registered Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Us</h2>
+    <p class="muted">
+      We focus on well-kept residences and responsive service. From preparing listings and screening tenants to routine
+      maintenance and transparent reporting, we manage each step with care so owners and residents can relax.
+    </p>
+    <div class="cards" style="margin-top:12px">
+      <article class="card reveal"><strong>Professional:</strong> Clear lease terms, on-time reporting, and organized processes.</article>
+      <article class="card reveal"><strong>Resident-first:</strong> Friendly support channels and quick responses.</article>
+      <article class="card reveal"><strong>Upkeep:</strong> Preventive maintenance and vetted contractors.</article>
+      <article class="card reveal"><strong>Value:</strong> Cost-aware operations that protect asset quality.</article>
     </div>
+  </section>
 
-    <div class="section contact" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Email:</strong> <a href="mailto:contact@patcargovadllc.click">contact@patcargovadllc.click</a></p>
-        <p><strong>Agent Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
+  <!-- Services -->
+  <section id="services" class="container">
+    <h2>Services</h2>
+    <div class="cards">
+      <article class="card reveal">
+        <h3>Leasing</h3>
+        <p>Listings, showings, screening, and move-in coordination with digital paperwork.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Property Management</h3>
+        <p>Rent collection, maintenance tickets, vendor scheduling, and monthly statements.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Turnovers</h3>
+        <p>Make-ready plans, paint & patch, deep clean, and photo updates for fast relist.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Owner Reporting</h3>
+        <p>Income/expense summaries, document storage, and year-end packages.</p>
+      </article>
     </div>
+  </section>
 
-    <footer>
-        &copy; 2025 PAT Cargo VAD LLC. All rights reserved.
-    </footer>
+  <!-- Gallery -->
+  <section id="gallery" class="container">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/50.192mn_in_situ_exterior_east_print_bw_IMLS%2C_Schenck_House.jpg" alt="Exterior">
+      <img src="https://live.staticflickr.com/3190/2802588545_6297854412_b.jpg" alt="Neighborhood view">
+      <img src="https://www.brickunderground.com/sites/default/files/styles/new_blog_entry_primary_image_sm/public/blog/images/2770%20East%2063rd%20Street%20MAIN.png" alt="Front facade">
+      <img src="http://static01.nyt.com/images/2015/05/10/realestate/10COVSIDE5/10COVSIDE5-articleLarge.jpg" alt="Interior detail">
+    </div>
+  </section>
 
-    <script>
-        // Intersection Observer for fade-in effect
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <div class="contact-box">
+      <div><strong>Company:</strong> KAROBAR BROOKLYN MILL BASIN LLC</div>
+      <div><strong>Domain:</strong> Property Services (Leasing & Management)</div>
+      <div><strong>Address:</strong> 506 Messian Pl, Danville, CA 94526-4378, United States</div>
+      <div><strong>Phone:</strong> +1 712 345 0450</div>
+      <div><strong>Email:</strong> admin@najrttasmen.shop</div>
+      <div class="contact-actions">
+        <a href="mailto:admin@najrttasmen.shop?subject=Property%20Services%20Inquiry" target="_blank" rel="noopener">Email Us</a>
+        <a href="tel:+17123450450">Call Now</a>
+        <a href="https://wa.me/17123450450" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=506+Messian+Pl,+Danville,+CA+94526" target="_blank" rel="noopener">Open Map</a>
+      </div>
+    </div>
+  </section>
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  <footer>
+    © 2025 KAROBAR BROOKLYN MILL BASIN LLC — All rights reserved
+  </footer>
 
+  <script>
+    // Reveal-on-scroll for cards
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('reveal'); observer.unobserve(e.target); }
+      })
+    }, {threshold:.15});
+    document.querySelectorAll('.card').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
